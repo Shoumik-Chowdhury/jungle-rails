@@ -5,7 +5,8 @@
   </header>
 
   <% if enhanced_cart.empty? %>
-  <div class="alert alert-primary" role="alert">Cart is empty</div>
+    <div class="alert alert-primary" role="alert">Cart is empty</div>
+    <a href="/">Go back</a>
   <% end %>
 
   <% unless enhanced_cart.empty? %>
