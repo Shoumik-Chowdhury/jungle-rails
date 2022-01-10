@@ -2,6 +2,13 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    items = LineItem.where(order_id: params[:id])
+    helper_cart = {}
+    items.each do |item|
+      helper_cart[item[:product_id]] = item[:quantity]
+    end
+    @ordered_cart ||= Product.where(id: helper_cart.keys).map {|product| { product:product, quantity: helper_cart[product[:id]] } }
+    @total = @ordered_cart.map {|entry| entry[:product].price_cents * entry[:quantity]}.sum
   end
 
   def create
