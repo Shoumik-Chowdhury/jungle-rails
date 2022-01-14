@@ -52,5 +52,6 @@ RSpec.describe Product, type: :model do
       })
       expect(@product.errors.messages[:category]).to include("can't be blank")
     end
+
   end
 end
